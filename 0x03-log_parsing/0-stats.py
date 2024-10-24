@@ -24,9 +24,9 @@ total_size = 0
 
 def print_stats():
     """Prints accumulated file size and status counts"""
-    print(f"File size: {total_size}")
+    print(f"File size: {total_size}", flush=True)
     for key in sorted(statuses):
-        print(f"{key}: {statuses[key]}")
+        print(f"{key}: {statuses[key]}", flush=True)
 
 
 def handle_signal(sig, frame):
@@ -39,18 +39,23 @@ signal.signal(signal.SIGINT, handle_signal)
 
 
 for line in sys.stdin:
+    line_count += 1
+
     match = pattern.match(line.strip())
 
     if match:
         status, file_size = match.groups()
 
-        status = int(status)
+        try:
+            status = int(status)
+        except ValueError:
+            continue
+
         if status in set_status:
             statuses[status] = statuses.get(status, 0) + 1
 
         total_size += int(file_size)
 
-        line_count += 1
         if line_count == 10:
             print_stats()
             line_count = 0
