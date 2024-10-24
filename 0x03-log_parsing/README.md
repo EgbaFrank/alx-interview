@@ -1,0 +1,1 @@
+# Learning about log parsing
