@@ -11,7 +11,7 @@ pattern = re.compile(r'''
     ^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}   # IP Address
     \s-\s\[\d{4}-\d{2}-\d{2}              # Date (YYYY-MM-DD)
     \s\d{2}:\d{2}:\d{2}\.\d{6}\]          # Time (HH:MM:SS.microseconds)
-    \s"GET\s/projects/260\sHTTP/1.1"        # HTTP request
+    \s"GET\s/projects/260\sHTTP/1.1"      # HTTP request
     \s(\d{3})                             # Status code
     \s(\d+)$                              # File size
 ''', re.VERBOSE)
