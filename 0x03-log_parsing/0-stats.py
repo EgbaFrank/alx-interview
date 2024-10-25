@@ -34,6 +34,7 @@ def handle_signal(sig, frame):
     print_stats()
     sys.exit(0)
 
+
 # Capture SIGINT (Ctrl + C)
 signal.signal(signal.SIGINT, handle_signal)
 
@@ -59,3 +60,7 @@ for line in sys.stdin:
         if line_count == 10:
             print_stats()
             line_count = 0
+
+# Print remaining stats if the input ends before a signal interrupts
+if line_count > 0:
+    print_stats()
