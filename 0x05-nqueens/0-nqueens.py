@@ -24,6 +24,8 @@ results = []
 
 
 def is_safe(col, row):
+    """Determines if cell is safe to place queen
+    """
     for i in range(col):
         if board[i][row]:
             return False
@@ -46,6 +48,8 @@ def is_safe(col, row):
 
 
 def nqueens(col):
+    """Main function
+    """
     if col >= n:
         results.append([
             [m, n] for m in range(len(board))
